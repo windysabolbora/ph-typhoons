@@ -14,18 +14,26 @@ if "model" not in st.session_state:
     st.session_state.model = None
 
 def app():
-    st.title('Typhoon Prediction in the Philippines')
-    st.write('This is the Typhoon Prediction in the Philippines app. This app is used to predict the typhoon in the Philippines.')
-    st.write('The data is from the Philippine Atmospheric, Geophysical and Astronomical Services Administration (PAGASA).') 
+    st.subheader('RNN-LSTM Based Typhoon Prediction in the Philippines')
+    
+    text = """This Streamlit app utilizes a bi-directional Recurrent Neural Network 
+    (RNN) with Long Short-Term Memory (LSTM) units to analyze historical typhoon 
+    data and forecast the likelihood of typhoons affecting the Philippines in a 
+    given month. Users can interact with the app to visualize past typhoon 
+    patterns and receive monthly forecasts, potentially aiding in disaster 
+    preparedness efforts."""
+    st.write(text)
+
+    text = """The data is obtained from the following site : 
+    https://en.wikipedia.org/wiki/List_of_typhoons_in_the_Philippines_(2000%E2%80%93present)"""
+    st.write(text)  
+
+    df = pd.read_csv('./ph-typhoons.csv', header=0)
+
 
     with st.expander('View Dataset'):
         # Load the data
-        df = pd.read_csv('./ph-typhoons.csv', header=0)
         st.write(df)    
-        st.write(df.shape)
-
-    with st.expander("Show Dataset"):
-        st.write(df)
         st.write(df.shape)
 
     #re-index and use the Month column data convert to numpy datatime datatype
