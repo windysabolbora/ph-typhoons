@@ -30,7 +30,6 @@ def app():
 
     df = pd.read_csv('./ph-typhoons.csv', header=0)
 
-
     with st.expander('View Dataset'):
         # Load the data
         st.write(df)    
